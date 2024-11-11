@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location: ../index.php'); 
                 exit();
             } else {
-                $message = "<div class='error text-white fs-4'>Cet utilisateur n'existe pas. Veuillez réessayer !</div>";
+                $message = "<div class='error text-white fs-4'>Email ou mot de pass incorrect. Veuillez réessayer !</div>";
             }
         } else {
             $message = "<div class='error text-white fs-4'>Une erreur s'est produite lors de la tentative de connexion.</div>";

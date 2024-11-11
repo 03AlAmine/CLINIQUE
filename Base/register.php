@@ -1,8 +1,7 @@
-
-
 <?php
 ob_start(); 
 $message = ""; 
+$success = ""; 
 include 'ConnectDB.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -36,8 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $insert->bindValue(':confirm', $confirm);
 
                     if ($insert->execute()) {
-                        header('Location:login.php');
-                        exit();
+                        $success = "<div class='success text-white fs-4'>Inscription réussie. Redirection en cours...</div>";
                     } else {
                         $message = "<div class='error text-white fs-4'>Une erreur s'est produite lors de l'inscription.</div>";
                     }
@@ -63,13 +61,13 @@ ob_end_flush();
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../assets/css/login-style.css">
-
 </head>
 
 <body>
     <div class="container">
         <div class="heading">S'inscrire</div>
         <?php echo $message ?>
+        <?php echo $success ?>
         <form action="" method="post" class="form">
             <input required="" class="input" type="text" name="username" id="username" placeholder="Username">
             <input required="" class="input" type="date" name="date" id="date" placeholder="Date de Naissance">
@@ -83,7 +81,7 @@ ob_end_flush();
                     placeholder="Confirm Password">
                 <i id="toggle-confirm-password" class="fas fa-eye-slash"></i>
             </div>
-            <h4>Déja un compte?<a href="login.php"> Se connecter !</a></h4>
+            <h4>Déjà un compte? <a href="login.php">Se connecter !</a></h4>
             <span id="password-message" class="error-message"></span>
 
             <input class="login-button" type="submit" value="S'inscrire">
@@ -103,6 +101,7 @@ ob_end_flush();
                 </button>
             </div>
         </div>
+        
         <script>
         const togglePasswordButton = document.getElementById('toggle-password');
         const passwordInput = document.getElementById('password');
@@ -121,6 +120,13 @@ ob_end_flush();
             toggleConfirmPasswordButton.classList.toggle('fa-eye');
             toggleConfirmPasswordButton.classList.toggle('fa-eye-slash');
         });
+
+        // Redirection en JavaScript après inscription réussie
+        <?php if (!empty($success)): ?>
+            setTimeout(function() {
+                window.location.href = 'login.php';
+            }, 2000); // Délai de 2 secondes
+        <?php endif; ?>
         </script>
     </div>
 </body>
