@@ -16,16 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($select->execute()) {
             if ($select->rowCount() > 0) {
                 // Connexion réussie
-                $_SESSION['email'] = $email_input;
+               // $_SESSION['email'] = $email_input;
 
-                $user = $select->fetch();
-                $first_name = $user['first_name'];
-                $last_name = $user['last_name'];
-                $initials = strtoupper(substr($first_name, 0, 1) . substr($last_name, 0, 1)); 
-                $_SESSION['initials'] = $initials;
+               // $user = $select->fetch();
+               // $first_name = $user['first_name'];
+               // $last_name = $user['last_name'];
+               // $initials = strtoupper(substr($first_name, 0, 1) . substr($last_name, 0, 1)); 
+               // $_SESSION['initials'] = $initials;
 
                 $message = "<div class='success text-white fs-4'>Connexion réussie !</div>";
-                header('Location: index.html'); 
+                header('Location: ../index.php'); 
                 exit();
             } else {
                 $message = "<div class='error text-white fs-4'>Cet utilisateur n'existe pas. Veuillez réessayer !</div>";
@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="/assets/css/login-style.css">
+    <link rel="stylesheet" href="../assets/css/login-style.css">
 </head>
 <body>
     <div class="container">
