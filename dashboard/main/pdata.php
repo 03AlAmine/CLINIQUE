@@ -1,14 +1,17 @@
 <?php
+
 error_reporting(E_ERROR | E_PARSE);
 ////OMAAR CHANGE THIS TO A FILE 
 
-include('../../ConnectDB.php');
+
+//include('../../ConnectDB.php');
+include('../../ConnectAll.php');
+session_start();
+
 
 $data = $conn;
-session_start();
 $fixid = $_SESSION["id"];
 $username = $_SESSION["username"];
-
 
 
 $sql = "select * from users where id= '$fixid'";

@@ -1,5 +1,5 @@
 ﻿<?php
-include_once('../../connectDB.php');
+include_once('../../connectAll.php');
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ include_once('../../connectDB.php');
 <body class="hold-transition light-skin sidebar-mini theme-primary fixed">
 
     <div class="wrapper">
-        <div id="loader"></div>
+        <!--  <div id="loader"></div> -->
 
         <header class="main-header">
 
@@ -98,9 +98,10 @@ include_once('../../connectDB.php');
                                 data-bs-toggle="dropdown" title="User">
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"> Omar MAARAF</p>
+                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"><?php echo $_SESSION['username']; ?></p>
                                         <small class="fs-10 mb-0 text-uppercase text-mute">Admin</small>
                                     </div>
+
                                     <img src="../images/avatar/doctor.png"
                                         class="avatar rounded-10 bg-primary-light h-40 w-40" alt="" />
                                 </div>
@@ -210,7 +211,6 @@ include_once('../../connectDB.php');
                                                 <h2 class="fs-40 my-0" style="color:#3596f7">
                                                     <?php
                                                     echo $all;
-
                                                     ?>
                                                 </h2>
                                                 <!--
@@ -879,260 +879,260 @@ include_once('../../connectDB.php');
 
     <?php include 'data.php' ?>
     <script>
-    var days = <?php echo json_encode($weekdays); ?>;
-    var dayName = days[new Date().getDay()];
-    var days_ = <?php echo json_encode($days); ?>;
-    var genre = <?php echo json_encode($genre); ?>;
-    var heur = <?php echo json_encode($heur); ?>;
-    $(function() {
-        var info = <?php echo json_encode($info); ?>;
+        var days = <?php echo json_encode($weekdays); ?>;
+        var dayName = days[new Date().getDay()];
+        var days_ = <?php echo json_encode($days); ?>;
+        var genre = <?php echo json_encode($genre); ?>;
+        var heur = <?php echo json_encode($heur); ?>;
+        $(function() {
+            var info = <?php echo json_encode($info); ?>;
 
 
 
 
-        'use strict';
+            'use strict';
 
 
-        var options = {
-            series: [(info[1] + 1 - 1) / 10, (info[0] + 1 - 1) / 10],
+            var options = {
+                series: [(info[1] + 1 - 1) / 10, (info[0] + 1 - 1) / 10],
 
-            chart: {
-                type: 'donut',
-                width: 186,
-            },
-            dataLabels: {
-                enabled: false,
-            },
-            colors: ['#5156be', '#c8c9ee'],
-            legend: {
-                show: false,
-            },
+                chart: {
+                    type: 'donut',
+                    width: 186,
+                },
+                dataLabels: {
+                    enabled: false,
+                },
+                colors: ['#5156be', '#c8c9ee'],
+                legend: {
+                    show: false,
+                },
 
-            plotOptions: {
-                pie: {
-                    donut: {
-                        size: '75%',
-                        labels: {
-                            show: true,
-                            total: {
-                                showAlways: true,
-                                show: true
-                            }
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '75%',
+                            labels: {
+                                show: true,
+                                total: {
+                                    showAlways: true,
+                                    show: true
+                                }
+                            },
+                        }
+                    }
+                },
+                labels: ["Woman", "Man"],
+                responsive: [{
+                    breakpoint: 1600,
+                    options: {
+                        chart: {
+                            width: 175,
+                        }
+                    }
+                }, {
+                    breakpoint: 500,
+                    options: {
+                        chart: {
+                            width: 200,
+                        }
+                    }
+                }]
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart124"), options);
+            chart.render();
+
+
+            var datepaginator = function() {
+                return {
+                    init: function() {
+                        $("#paginator1").datepaginator()
+                    }
+                }
+            }();
+            jQuery(document).ready(function() {
+                datepaginator.init()
+            });
+
+
+            $('.inner-user-div4').slimScroll({
+                height: '315px'
+            });
+
+            $('.inner-user-div3').slimScroll({
+                height: '127px'
+            });
+
+
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 0,
+                responsiveClass: true,
+                autoplay: true,
+                dots: false,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 1,
+                    },
+                    1000: {
+                        items: 1,
+                    }
+                }
+            });
+
+            var options = {
+                series: [genre['homme'], genre['femme'], genre['enfant'], genre['bébé']],
+                chart: {
+                    height: 200,
+                    type: 'polarArea'
+                },
+                labels: ['Homme', 'Femme', 'Enfant', 'bébé'],
+                fill: {
+                    opacity: 1
+                },
+                stroke: {
+                    width: 1,
+                    colors: undefined
+                },
+                yaxis: {
+                    show: false
+                },
+                legend: {
+                    position: 'right'
+                },
+                colors: ['#5156be', '#3596f7', '#05825f', '#ee3158'],
+                plotOptions: {
+                    polarArea: {
+                        rings: {
+                            strokeWidth: 0
+                        },
+                        spokes: {
+                            strokeWidth: 0
                         },
                     }
-                }
-            },
-            labels: ["Woman", "Man"],
-            responsive: [{
-                breakpoint: 1600,
-                options: {
-                    chart: {
-                        width: 175,
+                },
+            };
+
+            var chart = new ApexCharts(document.querySelector("#chart432"), options);
+            chart.render();
+
+
+
+            var options = {
+                series: [{
+                    name: 'Total',
+                    data: [heur[8], heur[9], heur[10], heur[11], heur[12], heur[13], heur[14], heur[15],
+                        heur[16]
+                    ]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 205,
+                    toolbar: {
+                        show: false
                     }
-                }
-            }, {
-                breakpoint: 500,
-                options: {
-                    chart: {
-                        width: 200,
-                    }
-                }
-            }]
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart124"), options);
-        chart.render();
-
-
-        var datepaginator = function() {
-            return {
-                init: function() {
-                    $("#paginator1").datepaginator()
-                }
-            }
-        }();
-        jQuery(document).ready(function() {
-            datepaginator.init()
-        });
-
-
-        $('.inner-user-div4').slimScroll({
-            height: '315px'
-        });
-
-        $('.inner-user-div3').slimScroll({
-            height: '127px'
-        });
-
-
-        $('.owl-carousel').owlCarousel({
-            loop: true,
-            margin: 0,
-            responsiveClass: true,
-            autoplay: true,
-            dots: false,
-            nav: true,
-            responsive: {
-                0: {
-                    items: 1,
                 },
-                600: {
-                    items: 1,
-                },
-                1000: {
-                    items: 1,
-                }
-            }
-        });
-
-        var options = {
-            series: [genre['homme'], genre['femme'], genre['enfant'], genre['bébé']],
-            chart: {
-                height: 200,
-                type: 'polarArea'
-            },
-            labels: ['Homme', 'Femme', 'Enfant', 'bébé'],
-            fill: {
-                opacity: 1
-            },
-            stroke: {
-                width: 1,
-                colors: undefined
-            },
-            yaxis: {
-                show: false
-            },
-            legend: {
-                position: 'right'
-            },
-            colors: ['#5156be', '#3596f7', '#05825f', '#ee3158'],
-            plotOptions: {
-                polarArea: {
-                    rings: {
-                        strokeWidth: 0
+                colors: ['#5156be'],
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '20%',
+                        endingShape: 'rounded'
                     },
-                    spokes: {
-                        strokeWidth: 0
-                    },
-                }
-            },
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart432"), options);
-        chart.render();
-
-
-
-        var options = {
-            series: [{
-                name: 'Total',
-                data: [heur[8], heur[9], heur[10], heur[11], heur[12], heur[13], heur[14], heur[15],
-                    heur[16]
-                ]
-            }],
-            chart: {
-                type: 'bar',
-                height: 205,
-                toolbar: {
-                    show: false
-                }
-            },
-            colors: ['#5156be'],
-            plotOptions: {
-                bar: {
-                    horizontal: false,
-                    columnWidth: '20%',
-                    endingShape: 'rounded'
                 },
-            },
-            dataLabels: {
-                enabled: false
-            },
-            grid: {
-                show: false,
-            },
-            stroke: {
-                show: false,
-                width: 0,
-                colors: ['transparent']
-            },
-            xaxis: {
-                categories: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
-            },
-
-            yaxis: {
-                axisBorder: {
-                    show: false
+                dataLabels: {
+                    enabled: false
                 },
-                axisTicks: {
+                grid: {
                     show: false,
                 },
-                labels: {
+                stroke: {
                     show: false,
-                }
+                    width: 0,
+                    colors: ['transparent']
+                },
+                xaxis: {
+                    categories: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+                },
 
-            },
-            fill: {
-                opacity: 1
-            },
-            tooltip: {
-                y: {
-                    formatter: function(val) {
-                        return val + " Appointment"
+                yaxis: {
+                    axisBorder: {
+                        show: false
+                    },
+                    axisTicks: {
+                        show: false,
+                    },
+                    labels: {
+                        show: false,
+                    }
+
+                },
+                fill: {
+                    opacity: 1
+                },
+                tooltip: {
+                    y: {
+                        formatter: function(val) {
+                            return val + " Appointment"
+                        }
                     }
                 }
-            }
-        };
+            };
 
-        var chart = new ApexCharts(document.querySelector("#appointment_overview"), options);
-        chart.render();
-
+            var chart = new ApexCharts(document.querySelector("#appointment_overview"), options);
+            chart.render();
 
 
-        var options = {
-            series: [{
-                name: "patients ",
-                data: [days_['today_6'], days_['today_5'], days_['today_4'], days_['today_3'],
-                    days_[
-                        'today_2'], days_['today_1'], days_['today']
-                ]
-            }],
-            chart: {
-                height: 205,
-                type: 'area',
-                toolbar: {
-                    show: false
+
+            var options = {
+                series: [{
+                    name: "patients ",
+                    data: [days_['today_6'], days_['today_5'], days_['today_4'], days_['today_3'],
+                        days_[
+                            'today_2'], days_['today_1'], days_['today']
+                    ]
+                }],
+                chart: {
+                    height: 205,
+                    type: 'area',
+                    toolbar: {
+                        show: false
+                    }
+                },
+                colors: ['#05825f'],
+                dataLabels: {
+                    enabled: false,
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                grid: {
+                    borderColor: '#e7e7e7',
+                },
+                xaxis: {
+
+                    categories: [days[new Date().getDay() - 6], days[new Date().getDay() - 5], days[new Date()
+                            .getDay() - 4], days[new Date().getDay() - 3], days[new Date().getDay() - 2],
+                        days[new Date().getDay() - 1], days[new Date().getDay()]
+                    ],
+                },
+                legend: {
+                    show: false,
                 }
-            },
-            colors: ['#05825f'],
-            dataLabels: {
-                enabled: false,
-            },
-            stroke: {
-                curve: 'smooth'
-            },
-            grid: {
-                borderColor: '#e7e7e7',
-            },
-            xaxis: {
+            };
 
-                categories: [days[new Date().getDay() - 6], days[new Date().getDay() - 5], days[new Date()
-                        .getDay() - 4], days[new Date().getDay() - 3], days[new Date().getDay() - 2],
-                    days[new Date().getDay() - 1], days[new Date().getDay()]
-                ],
-            },
-            legend: {
-                show: false,
-            }
-        };
-
-        var chart = new ApexCharts(document.querySelector("#overview_trend"), options);
-        chart.render();
+            var chart = new ApexCharts(document.querySelector("#overview_trend"), options);
+            chart.render();
 
 
 
 
-    }); // End of use strict
+        }); // End of use strict
     </script>
     <script src="notes.js"></script>
 </body>

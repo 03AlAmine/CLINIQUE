@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
+
 include('pdata.php')
 ?>
 
@@ -86,8 +88,7 @@ include('pdata.php')
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
                                         <p class="pt-5 fs-14 mb-0 fw-700 text-primary">
-                                            <?php echo $username ?>
-                                        </p>
+                                        <?php echo $_SESSION['username']; ?>                                        </p>
                                         <small class="fs-10 mb-0 text-uppercase text-mute">Patient</small>
                                     </div>
                                     <img src="../images/avatar/1--.png"

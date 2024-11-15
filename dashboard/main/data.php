@@ -1,23 +1,31 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
-header('content-Type: application/json');
+//header('content-Type: application/json');
+//include('../../ConnectAll.php');
 
 include('../../ConnectDB.php');
 
+
 $data = $conn;
-$sql = "select * from costumer where sex ='homme' and date =DATE(now()) ";
+$sql = "select * from costumer where sex ='M'  ";
 
 $result = mysqli_query($data, $sql);
 $homme = mysqli_num_rows($result);
-$sql = "select * from costumer where sex ='femme' and date =DATE(now())";
+$sql = "select * from costumer where sex ='F' ";
 
 $result = mysqli_query($data, $sql);
 $femme = mysqli_num_rows($result);
+$username = $_SESSION["username"];
+$usernameid = $_SESSION["id"];
+
 
 $prhomme = round((($homme) / ($homme + $femme)) * 100, 2);
 $prfemme = 100 - $prhomme;
 
 $all = $homme + $femme;
+
+
+
 
 $sql = "select * from costumer where  etat ='urgent' and date = DATE(now())";
 $result = mysqli_query($data, $sql);

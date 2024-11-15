@@ -264,7 +264,7 @@ include('pdata.php')
                                             <h4 class="fw-600 mb-5" style="margin-top: 20px;">
                                                 <?php echo $patient_info["username"] ?></h4>
                                             <p><i class="fa fa-clock-o"></i>compte créer le
-                                                <?php echo $patient_info["creat"] ?> </p>
+                                                <?php echo $patient_info["created_at"] ?> </p>
                                         </div>
                                     </div>
                                 </div>

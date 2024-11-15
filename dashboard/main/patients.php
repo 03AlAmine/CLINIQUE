@@ -1,6 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-
+<?php
+include('../../ConnectAll.php')
+?>
 
 <head>
     <meta charset="utf-8">
@@ -81,7 +83,7 @@
                                 data-bs-toggle="dropdown" title="User">
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary">Omar MAARAF</p>
+                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"> <?php echo $_SESSION['username']; ?></p>
                                         <small class="fs-10 mb-0 text-uppercase text-mute">Admin</small>
                                     </div>
                                     <img src="../images/avatar/doctor.png"
@@ -203,13 +205,13 @@
                                                 for ($i = 0; $i < $num_P; $i++) {
 
                                                 ?>
-                                                <tr class="hover-primary">
+                                                    <tr class="hover-primary">
 
-                                                    <td><?php echo $all_P[$i]['id']  ?></td>
-                                                    <td><?php echo $all_P[$i]['check_in']  ?></td>
-                                                    <td><?php echo $all_P[$i]['full_name']  ?></td>
-                                                    <td><?php echo $all_P[$i]['docteur']  ?></td>
-                                                    <?php
+                                                        <td><?php echo $all_P[$i]['id']  ?></td>
+                                                        <td><?php echo $all_P[$i]['check_in']  ?></td>
+                                                        <td><?php echo $all_P[$i]['full_name']  ?></td>
+                                                        <td><?php echo $all_P[$i]['docteur']  ?></td>
+                                                        <?php
                                                         if (strcmp($all_P[$i]['type'], "Consultation initiale") == 0) {
                                                             echo "<td><span class=\"badge badge-success-light\">Consulation intiale</span></td>";
                                                         } elseif (strcmp($all_P[$i]['type'], "Suivi gynécologique") == 0) {
@@ -226,7 +228,7 @@
 
 
 
-                                                </tr>
+                                                    </tr>
                                                 <?php } ?>
 
                                             </tbody>

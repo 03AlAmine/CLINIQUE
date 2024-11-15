@@ -1,3 +1,7 @@
+<?php
+include_once('../../connectAll.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -81,7 +85,7 @@
                                 data-bs-toggle="dropdown" title="User">
                                 <div class="d-flex pt-1">
                                     <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary">Omar MAARAF</p>
+                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"><?php echo $_SESSION['username']; ?></p>
                                         <small class="fs-10 mb-0 text-uppercase text-mute">Admin</small>
                                     </div>
                                     <img src="../images/avatar/doctor.png"

@@ -1,8 +1,8 @@
 <?php
 $host = "localhost";
-$user = "root";
-$password = "";
-$db = "user";
+$user = "DieAmine";
+$password = "Clinique";
+$db = "da_clinique";
 $data = mysqli_connect($host, $user, $password, $db);
 
 $sql = "select * from costumer  where nom='omar' order by heur ";
