@@ -1,142 +1,66 @@
-<br />
-<div align="center">
-  <a href="https://github.com/OmarMAARAF/hospital1#panneau-dadministration">
-    <img src="./screenshots/logo-dark-text.png">
-  </a>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-  <h3 align="center">Projet Clinique ALKAWTAR</h3>
-  
-</div>
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-  </div>
- 
-<div align="center">
-  <h2>VIDEO TRAILER</h2>
-  <br/>
-  https://www.youtube.com/watch?v=SdZaJkHRsHA
+## About Laravel
 
-<a href="https://www.youtube.com/watch?v=SdZaJkHRsHA
-" target="_blank"><img src="https://i.ibb.co/rsLPPvG/6052675.jpg" 
-alt="IMAGE ALT TEXT HERE" width="700" height="400" border="10" /></a>
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-</div>
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Sommaire</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">A propos du projets</a>
-      <ul>
-        <li><a href="#built-with">Outils</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Les informations du admin et user</a>
-      <ul>
-        <li><a href="#prerequisites">Admin</a></li>
-        <li><a href="#installation">User</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#realiser">Réaliser par</a>
-    </li>
-    
-  </ol>
-</details>
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-<!-- ABOUT THE PROJECT -->
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## A propos du projets
+## Learning Laravel
 
-<div id="about-the-project"></div>
-<img src="./screenshots/main.png">
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Il s'agit d'une application web de gestion d'une clinique programmée en divers langagues a titre exemple PHP , JS ... et reliée à une base de données Mysql en ligne (cloud).
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-<center>Exigences fonctionnelles</center>
-<ul>
-<li>
-<h1 >Inscription</h1>
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Un internaute peut s’inscrire uniquement s’il prend un rdv chez un des Docteurs de notre clinique et cela par le remplissage d'un formulaire intéractive
+## Laravel Sponsors
 
-</li>
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-<li>
-<h1>Authentification</h1>
+### Premium Partners
 
-Afin de se connecter au comptes et pouvoir accéder aux différentes fonctionnalités,
-tout membre (Docteur,Patient )doit s’authentifier par un email et mot de passe puis va étre rediriger vers l'espace qu'il lui convient.
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
 
-</li>
+## Contributing
 
-<li>
-<h1>Panneau d'administration</h1>
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Tout membre du site possède un Panneau d'administration, ou il peut voir les informations de son compte à l'aide de différents diagrammes (nombre des patient par jour , etat des patients ...).
+## Code of Conduct
 
-</li>
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+## Security Vulnerabilities
 
-### Outils :
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-<div id="built-with"></div>
+## License
 
-- [HTML](https://fr.wikipedia.org/wiki/Hypertext_Markup_Language)
-- [CSS3](https://fr.wikipedia.org/wiki/Feuilles_de_style_en_cascade#:~:text=CSS3%20devient%20%C2%AB%20modulaire%20%C2%BB%2C%20afin,des%20sous%2Densembles%20de%20CSS3.)
-- [js](https://www.javascript.com/)
-- [MYSQL](https://www.mysql.com/fr/)
-- [PHP](https://www.php.net/)
-- [Bootstrap](https://getbootstrap.com)
-- [JQuery](https://jquery.com)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Les informations du admin et user
-
-<div id="getting-started"></div>
-
-Pour vous facilitez la tache à accéder aux comptes on déja créer des comptes dans notre base de données vous pouviez les accéder par les inforamtions suivantes:
-
-### User
-
-<div id="prerequisites"></div>
-
-- email
-  ```sh
-  mourabitiyoussef@gmail.com
-  ```
-- Mdp
-  ```sh
-  1234
-  ```
-
-### Admin
-
-<div id="installation"></div>
-
-- email
-  ```sh
-  omar@mail.com
-  ```
-- Mdp
-  ```sh
-  1234
-  ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-### Réaliser par
-
-<div id="realiser"></div>
-<ul>
-<li>Omar MAARAF</li>
-<li>Youssef MOURABITI</li>
-<li>SLIMANI Mohammed</li>
-<li>Youssef AMMARI</li>
-</ul>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
