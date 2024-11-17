@@ -74,7 +74,7 @@ if (isset($_POST['login-btn'])) {
 	}
 }
 
-
+/*
 $errors = []; // Initialiser la variable d'erreurs comme un tableau vide
 
 //Adding the new user to DATABASE
@@ -196,7 +196,7 @@ if (isset($_POST['register'])) {
 }
 
 
-
+*/
 
 if (isset($_POST['resend'])) {
 	$message = file_get_contents('resend_email.html');
