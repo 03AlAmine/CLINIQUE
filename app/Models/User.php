@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens; // Si vous utilisez Sanctum
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,14 +19,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'username',    // Ajouté
-        'verified',    // Ajouté
-        'token',       // Ajouté
-        'sexe',        // Ajouté
-        'age',         // Ajouté
-        'phone',       // Ajouté
-        'OldPatient',  // Ajouté
-        'adresse',     // Ajouté
+        'nom',
+        'prenom',
+        'sexe',
+        'telephone',
+        'adresse',
+        'age',
+        'role',
     ];
 
     /**
@@ -48,6 +45,14 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+    /**
+     * Relation entre User et Patient
+     * Un utilisateur a un patient
+     */
+    // Relation avec le modèle Patient
+    public function patient()
+    {
+        return $this->hasOne(Patient::class, 'id');  // L'attribut 'user_id' dans Patient
+    }
 }

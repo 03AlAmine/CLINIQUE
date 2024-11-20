@@ -4,26 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProfilpatientController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
-     * Show the application dashboard.
+     * Show the user profile page.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('patient/index-p');
+        return view('patient/profil-p');
     }
-
 }

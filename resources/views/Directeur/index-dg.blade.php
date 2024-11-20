@@ -1,179 +1,42 @@
-﻿<?php
-include_once('../../connectAll.php');
-?>
+@extends('base_header')
 
-<!DOCTYPE html>
-<html lang="en">
-
-
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Lobster&family=Montserrat:wght@400;600&family=Poppins:wght@100&family=Roboto:wght@300;700&family=Ubuntu&display=swap"
-        rel="stylesheet">
-    <link href="../assets/favicon/favicon.png" rel="icon">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
-
-    <title>
-        Alkawtar - Panneau d'administration
-    </title>
-
-    <!-- Vendors Style-->
-    <link rel="stylesheet" href="css/vendors_css.css">
-    <link rel="stylesheet" href="notes.css">
-
-
-    <!-- Style-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/skin_color.css">
-
-</head>
-
-<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
-
-    <div class="wrapper">
-        <!--  <div id="loader"></div> -->
-
-        <header class="main-header">
-
-            <div class="d-flex align-items-center logo-box justify-content-start">
-                <!-- Logo -->
-                <a href="../../index.html" class="logo">
-                    <!-- logo-->
-
-
-                    <div class="logo-lg">
-                        <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
-                        <span class="dark-logo"><img src="../images/lofgo-light-text.png" alt="logo"></span>
-                    </div>
-                </a>
+@section('content')
+<aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">
+        <div class="multinav">
+            <div class="multinav-scroll" style="height: 100%;">
+                <!-- sidebar menu-->
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li>
+                        <a href="{{ url('home_patient') }}">
+                            <i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url('appointement') }}">
+                            <i class="icon-Barcode-read"><span class="path1"></span><span class="path2"></span></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{ route('rapport') }}">
+                            <i class="icon-Compiling"><span class="path1"></span><span class="path2"></span></i>
+                            <span>Rapport</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('profil') }}">
+                            <i class="icon-Compiling"><span class="path1"></span><span class="path2"></span></i>
+                            <span>Profil</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
-
-            <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top">
-                <!-- Sidebar toggle button-->
-                <div class="app-menu">
-                    <ul class="header-megamenu nav">
-                        <li class="btn-group nav-item">
-                            <a href="#" class="waves-effect waves-light nav-link push-btn btn-primary-light"
-                                data-toggle="push-menu" role="button">
-                                <i class="icon-Menu"><span class="path1"></span><span class="path2"></span></i>
-                            </a>
-                        </li>
-                        <li class="btn-group d-lg-inline-flex d-none">
-                            <div class="app-menu">
-                                <div class="search-bx mx-5">
-                                    <form>
-                                        <div class="input-group">
-                                            <input type="search" class="form-control" placeholder="Search">
-                                            <div class="input-group-append">
-                                                <button class="btn" type="submit" id="button-addon3"><i
-                                                        class="icon-Search"><span class="path1"></span><span
-                                                            class="path2"></span></i></button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="navbar-custom-menu r-side">
-                    <ul class="nav navbar-nav">
-                        <!-- User Account-->
-                        <li class="dropdown user user-menu">
-                            <a href="#"
-                                class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent p-0 no-shadow"
-                                data-bs-toggle="dropdown" title="User">
-                                <div class="d-flex pt-1">
-                                    <div class="text-end me-10">
-                                        <p class="pt-5 fs-14 mb-0 fw-700 text-primary"><?php echo $_SESSION['username']; ?></p>
-                                        <small class="fs-10 mb-0 text-uppercase text-mute">Admin</small>
-                                    </div>
-
-                                    <img src="../images/avatar/doctor.png"
-                                        class="avatar rounded-10 bg-primary-light h-40 w-40" alt="" />
-                                </div>
-                            </a>
-                            <ul class="dropdown-menu animated flipInX">
-                                <li class="user-body">
-                                    <a class="dropdown-item" href="./index2.php"><i class="ti-user text-muted me-2"></i>
-                                        Profile</a>
-                                    <a class="dropdown-item" href="./Logout.php"><i class="ti-lock text-muted me-2"></i>
-                                        Logout</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="btn-group nav-item d-lg-inline-flex d-none">
-                            <a href="#" data-provide="fullscreen"
-                                class="waves-effect waves-light nav-link full-screen btn-warning-light"
-                                title="Full Screen">
-                                <i class="icon-Position"></i>
-                            </a>
-                        </li>
-                        <!-- Notifications -->
-
-                        <!-- Control Sidebar Toggle Button -->
-
-
-                    </ul>
-                </div>
-            </nav>
-        </header>
-
-        <aside class="main-sidebar">
-            <!-- sidebar-->
-            <section class="sidebar position-relative">
-                <div class="multinav">
-                    <div class="multinav-scroll" style="height: 100%;">
-                        <!-- sidebar menu-->
-                        <ul class="sidebar-menu" data-widget="tree">
-                            <li>
-                                <a href="./index2.php">
-                                    <i class="icon-Layout-4-blocks"><span class="path1"></span><span
-                                            class="path2"></span></i>
-                                    <span>Dashboard</span>
-
-                                </a>
-
-                            </li>
-                            <li>
-                                <a href="appointments.php">
-                                    <i class="icon-Barcode-read"><span class="path1"></span><span
-                                            class="path2"></span></i>
-                                    <span>Appointments</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="./patients.php">
-                                    <i class="icon-Compiling"><span class="path1"></span><span class="path2"></span></i>
-                                    <span>Patients</span>
-                                </a>
-
-                            </li>
-
-
-                        </ul>
-
-
-
-
-                    </div>
-                </div>
-            </section>
-        </aside>
-
+        </div>
+    </section>
+</aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <div class="container-full">
@@ -191,13 +54,13 @@ include_once('../../connectAll.php');
                                             <div class="mt-15 d-inline-block">
                                                 <div class="text-start mb-10">
                                                     <span class="badge badge-xl badge-dot badge-primary me-15"></span>
-                                                    <?php include 'data.php' ?>
-                                                    Women <?php echo "$info[3]%"; ?>
+
+                                                    Women Nombre de femme
                                                 </div>
                                                 <div class="text-start">
                                                     <span
                                                         class="badge badge-xl badge-dot badge-primary-light me-15"></span>
-                                                    Man <?php echo "$info[2]%"; ?>
+                                                    Man Pourcentage
                                                 </div>
                                             </div>
                                         </div>
@@ -209,9 +72,7 @@ include_once('../../connectAll.php');
                                             <h4>Vos patients aujourd'hui</h4>
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <h2 class="fs-40 my-0" style="color:#3596f7">
-                                                    <?php
-                                                    echo $all;
-                                                    ?>
+
                                                 </h2>
                                                 <!--
                                                 <div>
@@ -225,7 +86,7 @@ include_once('../../connectAll.php');
                                         <div class="box-body">
                                             <h4>les patients urgent</h4>
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <h2 class="fs-40 my-0" style="color:#ee3158"><?php echo $info[5] ?></h2>
+                                                <h2 class="fs-40 my-0" style="color:#ee3158"></h2>
                                                 <!--
                                                 <div>
                                                     <span class="badge badge-pill badge-danger-light"><i
@@ -248,7 +109,7 @@ include_once('../../connectAll.php');
                                         <div
                                             class="d-flex justify-content-between align-items-center pb-20 mb-10 bb-dashed border-bottom">
                                             <div class="pe-20">
-                                                <p class="fs-12 text-fade"><?php echo date('Y-m-d '); ?> </p>
+                                                <p class="fs-12 text-fade">dteee a ecrireee </p>
                                                 <h4>Dépendance banque de sang moelle osseuse désinfectants contagieux ?
                                                 </h4>
 
@@ -263,7 +124,7 @@ include_once('../../connectAll.php');
                                         <div
                                             class="d-flex justify-content-between align-items-center pb-20 bb-dashed border-bottom">
                                             <div class="pe-20">
-                                                <p class="fs-12 text-fade"><?php echo date('Y-m-d '); ?> </p>
+                                                <p class="fs-12 text-fade">date a ecrire </p>
                                                 <h4>Asthme déclenché anesthésie groupe sanguin moelle osseuse cartilage?
                                                 </h4>
 
@@ -275,36 +136,8 @@ include_once('../../connectAll.php');
                                                 </a>
                                             </div>
                                         </div>
-                                        <div
-                                            class="d-flex justify-content-between align-items-center pb-20 mb-10 bb-dashed border-bottom">
-                                            <div class="pe-20">
-                                                <p class="fs-12 text-fade"><?php echo date('Y-m-d '); ?> </p>
-                                                <h4>Dépendance banque de sang moelle osseuse désinfectants contagieux ?
-                                                </h4>
 
-                                            </div>
-                                            <div>
-                                                <a href="#"
-                                                    class="waves-effect waves-circle btn btn-circle btn-outline btn-light btn-lg">
-                                                    <ion-icon name="chatbubbles-outline"></ion-icon>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="d-flex justify-content-between align-items-center pb-20 bb-dashed border-bottom">
-                                            <div class="pe-20">
-                                                <p class="fs-12 text-fade"><?php echo date('Y-m-d '); ?> </p>
-                                                <h4>Asthme déclenché anesthésie groupe sanguin moelle osseuse cartilage?
-                                                </h4>
 
-                                            </div>
-                                            <div>
-                                                <a href="#"
-                                                    class="waves-effect waves-circle btn btn-circle btn-outline btn-light btn-lg">
-                                                    <ion-icon name="chatbubbles-outline"></ion-icon>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -325,28 +158,17 @@ include_once('../../connectAll.php');
                                 <div class="box-body p-15">
                                     <div class="mb-10 d-flex justify-content-between align-items-center">
                                         <div class="fw-600 min-w-120">
-                                            <?php echo $next[0]['heur']; ?>
+
                                         </div>
                                         <div
                                             class="w-p100 p-10 rounded10 justify-content-between align-items-center d-flex bg-lightest">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <?php
-                                                if ($next[0]['sex'] == 'homme') {
-                                                    echo '
-                                                <img src="../images/avatar/1--.png" class="me-10 avatar rounded-circle"
-                                                    alt="">';
-                                                } else {
-                                                    echo '
-                                                <img src="../images/avatar/2--.png" class="me-10 avatar rounded-circle"
-                                                    alt="">';
-                                                }
 
-                                                ?>
                                                 <div>
                                                     <h6 class="mb-0">
-                                                        <?php echo " " . $next[0]['nom'] . " " . $next[0]['prenom'] . ""; ?>
+
                                                     </h6>
-                                                    <p class="mb-0 fs-12 text-mute"><?php echo $next[0]['phone'] ?></p>
+                                                    <p class="mb-0 fs-12 text-mute"></p>
                                                 </div>
                                             </div>
                                             <div class="dropdown">
@@ -363,28 +185,16 @@ include_once('../../connectAll.php');
                                     </div>
                                     <div class="mb-10 d-flex justify-content-between align-items-center">
                                         <div class="fw-600 min-w-120">
-                                            <?php echo $next[1]['heur']; ?>
+
                                         </div>
                                         <div
                                             class="w-p100 p-10 rounded10 justify-content-between align-items-center d-flex bg-lightest">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <?php
-                                                if ($next[1]['sex'] == 'homme') {
-                                                    echo '
-                                                <img src="../images/avatar/1--.png" class="me-10 avatar rounded-circle"
-                                                    alt="">';
-                                                } else {
-                                                    echo '
-                                                <img src="../images/avatar/2--.png" class="me-10 avatar rounded-circle"
-                                                    alt="">';
-                                                }
 
-                                                ?>
                                                 <div>
                                                     <h6 class="mb-0">
-                                                        <?php echo " " . $next[1]['nom'] . " " . $next[1]['prenom'] . ""; ?>
                                                     </h6>
-                                                    <p class="mb-0 fs-12 text-mute"><?php echo $next[1]['phone'] ?></p>
+                                                    <p class="mb-0 fs-12 text-mute"></p>
                                                 </div>
                                             </div>
                                             <div class="dropdown">
@@ -401,28 +211,16 @@ include_once('../../connectAll.php');
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="fw-600 min-w-120">
-                                            <?php echo $next[2]['heur']; ?>
+
                                         </div>
                                         <div
                                             class="w-p100 p-10 rounded10 justify-content-between align-items-center d-flex bg-lightest">
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <?php
-                                                if ($next[2]['sex'] == 'homme') {
-                                                    echo '
-                                                <img src="../images/avatar/1--.png" class="me-10 avatar rounded-circle"
-                                                    alt="">';
-                                                } else {
-                                                    echo '
-                                                <img src="../images/avatar/2--.png" class="me-10 avatar rounded-circle"
-                                                    alt="">';
-                                                }
 
-                                                ?>
                                                 <div>
                                                     <h6 class="mb-0">
-                                                        <?php echo " " . $next[2]['nom'] . " " . $next[2]['prenom'] . ""; ?>
                                                     </h6>
-                                                    <p class="mb-0 fs-12 text-mute"><?php echo $next[2]['phone'] ?></p>
+                                                    <p class="mb-0 fs-12 text-mute"></p>
                                                 </div>
                                             </div>
                                             <div class="dropdown">
@@ -451,10 +249,10 @@ include_once('../../connectAll.php');
                                                 <div class="d-flex flex-column flex-grow-1 fw-500">
                                                     <p class="hover-primary text-fade mb-1 fs-14"><i
                                                             class="fa fa-link"></i>
-                                                        <?php echo " " . $next[0]['nom'] . " " . $next[0]['prenom'] . "" ?>
+
                                                     </p>
                                                     <span
-                                                        class="text-dark fs-16"><?php echo  $next[0]['type']  ?></span>
+                                                        class="text-dark fs-16"></span>
                                                 </div>
 
                                             </div>
@@ -478,9 +276,8 @@ include_once('../../connectAll.php');
                                                 <div class="d-flex flex-column flex-grow-1 fw-500">
                                                     <p class="hover-primary text-fade mb-1 fs-14"><i
                                                             class="fa fa-link"></i>
-                                                        <?php echo " " . $next[1]['nom'] . " " . $next[1]['prenom'] . "" ?>
                                                     </p>
-                                                    <span class="text-dark fs-16"><?php echo  $next[1]['type']  ?>
+                                                    <span class="text-dark fs-16">
                                                     </span>
                                                 </div>
 
@@ -505,9 +302,8 @@ include_once('../../connectAll.php');
                                                 <div class="d-flex flex-column flex-grow-1 fw-500">
                                                     <p class="hover-primary text-fade mb-1 fs-14"><i
                                                             class="fa fa-link"></i>
-                                                        <?php echo " " . $next[2]['nom'] . " " . $next[2]['prenom'] . "" ?>
                                                     </p>
-                                                    <span class="text-dark fs-16"><?php echo  $next[2]['type']  ?>
+                                                    <span class="text-dark fs-16">z
                                                     </span>
                                                 </div>
 
@@ -875,267 +671,7 @@ include_once('../../connectAll.php');
     <script src="../assets/vendor_components/date-paginator/bootstrap-datepaginator.min.js"></script>
 
     <!-- Doclinic App <script src="js/pages/dashboard2.js"></script>-->
-    <script src="js/template.js"></script>
-
-    <?php include 'data.php' ?>
-    <script>
-        var days = <?php echo json_encode($weekdays); ?>;
-        var dayName = days[new Date().getDay()];
-        var days_ = <?php echo json_encode($days); ?>;
-        var genre = <?php echo json_encode($genre); ?>;
-        var heur = <?php echo json_encode($heur); ?>;
-        $(function() {
-            var info = <?php echo json_encode($info); ?>;
 
 
 
-
-            'use strict';
-
-
-            var options = {
-                series: [(info[1] + 1 - 1) / 10, (info[0] + 1 - 1) / 10],
-
-                chart: {
-                    type: 'donut',
-                    width: 186,
-                },
-                dataLabels: {
-                    enabled: false,
-                },
-                colors: ['#5156be', '#c8c9ee'],
-                legend: {
-                    show: false,
-                },
-
-                plotOptions: {
-                    pie: {
-                        donut: {
-                            size: '75%',
-                            labels: {
-                                show: true,
-                                total: {
-                                    showAlways: true,
-                                    show: true
-                                }
-                            },
-                        }
-                    }
-                },
-                labels: ["Woman", "Man"],
-                responsive: [{
-                    breakpoint: 1600,
-                    options: {
-                        chart: {
-                            width: 175,
-                        }
-                    }
-                }, {
-                    breakpoint: 500,
-                    options: {
-                        chart: {
-                            width: 200,
-                        }
-                    }
-                }]
-            };
-
-            var chart = new ApexCharts(document.querySelector("#chart124"), options);
-            chart.render();
-
-
-            var datepaginator = function() {
-                return {
-                    init: function() {
-                        $("#paginator1").datepaginator()
-                    }
-                }
-            }();
-            jQuery(document).ready(function() {
-                datepaginator.init()
-            });
-
-
-            $('.inner-user-div4').slimScroll({
-                height: '315px'
-            });
-
-            $('.inner-user-div3').slimScroll({
-                height: '127px'
-            });
-
-
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 0,
-                responsiveClass: true,
-                autoplay: true,
-                dots: false,
-                nav: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                    },
-                    600: {
-                        items: 1,
-                    },
-                    1000: {
-                        items: 1,
-                    }
-                }
-            });
-
-            var options = {
-                series: [genre['homme'], genre['femme'], genre['enfant'], genre['bébé']],
-                chart: {
-                    height: 200,
-                    type: 'polarArea'
-                },
-                labels: ['Homme', 'Femme', 'Enfant', 'bébé'],
-                fill: {
-                    opacity: 1
-                },
-                stroke: {
-                    width: 1,
-                    colors: undefined
-                },
-                yaxis: {
-                    show: false
-                },
-                legend: {
-                    position: 'right'
-                },
-                colors: ['#5156be', '#3596f7', '#05825f', '#ee3158'],
-                plotOptions: {
-                    polarArea: {
-                        rings: {
-                            strokeWidth: 0
-                        },
-                        spokes: {
-                            strokeWidth: 0
-                        },
-                    }
-                },
-            };
-
-            var chart = new ApexCharts(document.querySelector("#chart432"), options);
-            chart.render();
-
-
-
-            var options = {
-                series: [{
-                    name: 'Total',
-                    data: [heur[8], heur[9], heur[10], heur[11], heur[12], heur[13], heur[14], heur[15],
-                        heur[16]
-                    ]
-                }],
-                chart: {
-                    type: 'bar',
-                    height: 205,
-                    toolbar: {
-                        show: false
-                    }
-                },
-                colors: ['#5156be'],
-                plotOptions: {
-                    bar: {
-                        horizontal: false,
-                        columnWidth: '20%',
-                        endingShape: 'rounded'
-                    },
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                grid: {
-                    show: false,
-                },
-                stroke: {
-                    show: false,
-                    width: 0,
-                    colors: ['transparent']
-                },
-                xaxis: {
-                    categories: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
-                },
-
-                yaxis: {
-                    axisBorder: {
-                        show: false
-                    },
-                    axisTicks: {
-                        show: false,
-                    },
-                    labels: {
-                        show: false,
-                    }
-
-                },
-                fill: {
-                    opacity: 1
-                },
-                tooltip: {
-                    y: {
-                        formatter: function(val) {
-                            return val + " Appointment"
-                        }
-                    }
-                }
-            };
-
-            var chart = new ApexCharts(document.querySelector("#appointment_overview"), options);
-            chart.render();
-
-
-
-            var options = {
-                series: [{
-                    name: "patients ",
-                    data: [days_['today_6'], days_['today_5'], days_['today_4'], days_['today_3'],
-                        days_[
-                            'today_2'], days_['today_1'], days_['today']
-                    ]
-                }],
-                chart: {
-                    height: 205,
-                    type: 'area',
-                    toolbar: {
-                        show: false
-                    }
-                },
-                colors: ['#05825f'],
-                dataLabels: {
-                    enabled: false,
-                },
-                stroke: {
-                    curve: 'smooth'
-                },
-                grid: {
-                    borderColor: '#e7e7e7',
-                },
-                xaxis: {
-
-                    categories: [days[new Date().getDay() - 6], days[new Date().getDay() - 5], days[new Date()
-                            .getDay() - 4], days[new Date().getDay() - 3], days[new Date().getDay() - 2],
-                        days[new Date().getDay() - 1], days[new Date().getDay()]
-                    ],
-                },
-                legend: {
-                    show: false,
-                }
-            };
-
-            var chart = new ApexCharts(document.querySelector("#overview_trend"), options);
-            chart.render();
-
-
-
-
-        }); // End of use strict
-    </script>
-    <script src="notes.js"></script>
-</body>
-
-
-</html>
+@endsection

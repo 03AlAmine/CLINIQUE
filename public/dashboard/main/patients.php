@@ -1,8 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <?php
-session_start();
-
 include('../../ConnectAll.php')
 ?>
 

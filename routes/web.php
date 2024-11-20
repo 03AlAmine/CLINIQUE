@@ -1,22 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PatientController;
-use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\DirectorController;
-use App\Http\Controllers\Auth\LoginController; 
-use App\Http\Controllers\Auth\ContactController; 
-use App\Http\Controllers\Auth\AboutController; 
-
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfilpatientController;
+
+
 
 /*
-|---------------------------------------------------------------------------
+|--------------------------------------------------------------------------
 | Web Routes
-|---------------------------------------------------------------------------
+|--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
@@ -24,56 +19,48 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route d'accueil
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about-us', [AboutController::class, 'index'])->name('about-us');
+Route::get('/', function () {
+    return view('index');
+})->name('home');
+Route::get('/about-us', function () {
+    return view('about');
+})->name('about');
+Route::get('/blog', function () {
+    return view('blog');
+})->name('blog');;
+Route::get('/contact-us', function () {
+    return view('contact');
+})->name('contact');;
 
-
-
-
-// Routes d'authentification
+//Authentification
 Auth::routes();
 
-// Routes pour les patients
-Route::prefix('patient')->middleware('auth')->group(function () {
-    Route::get('/dashboard', [PatientController::class, 'dashboard'])->name('patient.dashboard');
-    Route::get('/profile', [PatientController::class, 'profile'])->name('patient.profile');
-    Route::get('/appointments', [AppointmentController::class, 'patientAppointments'])->name('patient.appointments');
-    Route::post('/appointments', [AppointmentController::class, 'store'])->name('patient.storeAppointment');
+Route::middleware(['auth', 'role:Médecin'])->group(function () {
+    Route::get('/medecin-dashboard', function () {
+        return view('Medecin\index-m');
+    });
 });
 
-// Routes pour les médecins
-Route::prefix('doctor')->middleware(['auth', 'role:doctor'])->group(function () {
-    Route::get('/dashboard', [DoctorController::class, 'dashboard'])->name('doctor.dashboard');
-    Route::get('/profile', [DoctorController::class, 'profile'])->name('doctor.profile');
-    Route::get('/appointments', [AppointmentController::class, 'doctorAppointments'])->name('doctor.appointments');
-    Route::get('/reports', [ReportController::class, 'index'])->name('doctor.reports');
-    Route::post('/reports', [ReportController::class, 'store'])->name('doctor.storeReport');
+Route::middleware(['auth', 'role:Directeur'])->group(function () {
+    Route::get('/directeur-dashboard', function () {
+        return view('Directeur\index-dg');
+    });
 });
 
-// Routes pour le directeur
-Route::prefix('director')->middleware(['auth', 'role:director'])->group(function () {
-    Route::get('/dashboard', [DirectorController::class, 'dashboard'])->name('director.dashboard');
-    Route::get('/appointments', [AppointmentController::class, 'allAppointments'])->name('director.appointments');
-    Route::get('/statistics', [DirectorController::class, 'statistics'])->name('director.statistics');
-    Route::get('/users', [DirectorController::class, 'users'])->name('director.users');
-    Route::post('/users', [DirectorController::class, 'storeUser'])->name('director.storeUser');
+Route::middleware(['auth', 'role:Patient'])->group(function () {
+    Route::get('/patient-dashboard', function () {
+        return view('Patient\index-p');
+    });
 });
 
-// Gestion des utilisateurs (pour le directeur)
-Route::prefix('admin')->middleware(['auth', 'role:director'])->group(function () {
-    Route::get('/users', [DirectorController::class, 'manageUsers'])->name('admin.users');
-    Route::get('/users/{user}/edit', [DirectorController::class, 'editUser'])->name('admin.editUser');
-    Route::put('/users/{user}', [DirectorController::class, 'updateUser'])->name('admin.updateUser');
-    Route::delete('/users/{user}', [DirectorController::class, 'destroyUser'])->name('admin.deleteUser');
-});
+// Exemple si vous voulez personnaliser la route de connexion
+//Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+//Route::post('/login', [LoginController::class, 'login']);
 
-// Route pour rediriger après l'authentification
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact.submit');
-// Route pour la page de connexion
-Route::get('/login', [LoginController::class, 'ShowLoginForm'])->name('login');
-
+//Patient
+Route::get('/home_patient', [HomeController::class, 'index'])->name('home_patient');
+Route::get('/patient', [ProfilpatientController::class, 'index'])->name('profil');
+Route::get('/appointement', [ProfilpatientController::class, 'index'])->name('to do list');
 
 
 
